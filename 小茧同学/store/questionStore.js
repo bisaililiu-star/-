@@ -8,7 +8,7 @@ const STORAGE_KEY = "XJTK_STATE_V1";
  * @returns {{
  *  favorites: string[],
  *  wrongQuestions: string[],
- *  uploadRecords: Array<{ id: string, imagePath: string, note: string, createdAt: string }>
+ *  uploadRecords: Array<{ id: string, imagePath: string, note: string, createdAt: string, uploadType: "single" | "paper" }>
  * }}
  */
 function getDefaultState() {
@@ -171,7 +171,7 @@ function isFavorite(questionId) {
 /**
  * 保存拍照上传记录。
  *
- * @param {{ imagePath: string, note: string }} payload 上传信息
+ * @param {{ imagePath: string, note: string, uploadType?: "single" | "paper" }} payload 上传信息
  * @returns {void}
  */
 function addUploadRecord(payload) {
@@ -180,6 +180,7 @@ function addUploadRecord(payload) {
     id: `upload_${Date.now()}`,
     imagePath: payload.imagePath,
     note: payload.note || "",
+    uploadType: payload.uploadType || "single",
     createdAt: new Date().toISOString(),
   };
   setState({
@@ -191,7 +192,7 @@ function addUploadRecord(payload) {
 /**
  * 获取上传记录。
  *
- * @returns {Array<{ id: string, imagePath: string, note: string, createdAt: string }>}
+ * @returns {Array<{ id: string, imagePath: string, note: string, createdAt: string, uploadType: "single" | "paper" }>}
  */
 function getUploadRecords() {
   return getState().uploadRecords;

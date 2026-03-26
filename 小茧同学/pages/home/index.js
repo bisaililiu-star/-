@@ -8,6 +8,7 @@ const questionStore = require("../../store/questionStore");
 Page({
   data: {
     safeTop: 20,
+    showUploadSheet: false,
     modules: [],
     stats: {
       favoriteCount: 0,
@@ -150,13 +151,47 @@ Page({
   },
 
   /**
-   * 跳转到拍照上传页。
+   * 打开上传方式选择弹层。
    *
    * @returns {void}
    */
-  goUpload() {
+  openUploadSheet() {
+    this.setData({
+      showUploadSheet: true,
+    });
+  },
+
+  /**
+   * 关闭上传方式选择弹层。
+   *
+   * @returns {void}
+   */
+  closeUploadSheet() {
+    this.setData({
+      showUploadSheet: false,
+    });
+  },
+
+  /**
+   * 阻止弹层内部点击冒泡。
+   *
+   * @returns {void}
+   */
+  noop() {},
+
+  /**
+   * 选择上传类型并跳转上传页。
+   *
+   * @param {WechatMiniprogram.BaseEvent<{uploadType: "single" | "paper"}>} event 事件对象
+   * @returns {void}
+   */
+  onSelectUploadType(event) {
+    const { uploadType } = event.currentTarget.dataset;
+    this.setData({
+      showUploadSheet: false,
+    });
     wx.navigateTo({
-      url: "/pages/upload/index",
+      url: `/pages/upload/index?uploadType=${uploadType}`,
     });
   },
 

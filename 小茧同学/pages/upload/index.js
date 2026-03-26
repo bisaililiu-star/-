@@ -9,7 +9,27 @@ Page({
   data: {
     imagePath: "",
     note: "",
+    uploadType: "single",
+    uploadTypeLabel: "单题上传",
     uploadRecords: [],
+  },
+
+  /**
+   * 页面加载时读取上传类型参数。
+   *
+   * @param {{ uploadType?: "single" | "paper" }} options 路由参数
+   * @returns {void}
+   */
+  onLoad(options) {
+    const uploadType = options.uploadType === "paper" ? "paper" : "single";
+    const uploadTypeLabel = uploadType === "paper" ? "套卷上传" : "单题上传";
+    this.setData({
+      uploadType,
+      uploadTypeLabel,
+    });
+    wx.setNavigationBarTitle({
+      title: uploadTypeLabel,
+    });
   },
 
   /**
@@ -88,7 +108,7 @@ Page({
    * @returns {void}
    */
   submitUpload() {
-    const { imagePath, note } = this.data;
+    const { imagePath, note, uploadType } = this.data;
     if (!imagePath) {
       wx.showToast({
         title: "请先拍照或选图",
@@ -100,6 +120,7 @@ Page({
     questionStore.addUploadRecord({
       imagePath,
       note,
+      uploadType,
     });
 
     this.setData({

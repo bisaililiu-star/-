@@ -61,12 +61,54 @@
       <text class="nav-icon">✦</text>
       <text class="nav-label">题库</text>
     </view>
-    <view class="nav-center" bindtap="goUpload">
+    <view class="nav-center" bindtap="openUploadSheet">
       <text class="nav-center-plus">＋</text>
     </view>
     <view class="nav-item" bindtap="goMy">
       <text class="nav-icon">◌</text>
       <text class="nav-label">我的</text>
+    </view>
+  </view>
+
+  <view wx:if="{{showUploadSheet}}" class="upload-sheet-mask" bindtap="closeUploadSheet">
+    <view class="upload-sheet-panel" bindtap="noop">
+      <view class="upload-option-grid">
+        <view class="upload-option-card single">
+          <text class="upload-option-title">单题上传</text>
+          <view class="upload-preview">
+            <view class="corner lt"></view>
+            <view class="corner rt"></view>
+            <view class="corner lb"></view>
+            <view class="corner rb"></view>
+            <view class="preview-paper single"></view>
+          </view>
+          <view
+            class="upload-option-btn green"
+            data-upload-type="single"
+            bindtap="onSelectUploadType"
+          >
+            去拍摄
+          </view>
+        </view>
+        <view class="upload-option-card paper">
+          <text class="upload-option-title">套卷上传</text>
+          <view class="upload-preview">
+            <view class="corner lt orange"></view>
+            <view class="corner rt orange"></view>
+            <view class="corner lb orange"></view>
+            <view class="corner rb orange"></view>
+            <view class="preview-paper paper"></view>
+          </view>
+          <view
+            class="upload-option-btn orange"
+            data-upload-type="paper"
+            bindtap="onSelectUploadType"
+          >
+            去拍摄
+          </view>
+        </view>
+      </view>
+      <view class="upload-sheet-indicator"></view>
     </view>
   </view>
 </view>

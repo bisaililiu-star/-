@@ -1,6 +1,6 @@
 <view class="container">
   <view class="card">
-    <text class="title">拍照上传题目</text>
+    <text class="title">{{uploadTypeLabel}}</text>
     <text class="subtitle">用于记录题目图片，后续可接入 OCR 与智能解析。</text>
 
     <view class="upload-actions">
@@ -27,6 +27,7 @@
   <view class="card record-card" wx:for="{{uploadRecords}}" wx:key="id">
     <image class="record-image" src="{{item.imagePath}}" mode="aspectFill" />
     <view class="record-main">
+      <text class="record-type">{{item.uploadType === 'paper' ? '套卷上传' : '单题上传'}}</text>
       <text class="record-note">{{item.note || '未填写备注'}}</text>
       <text class="record-time">{{item.createdAt}}</text>
     </view>
