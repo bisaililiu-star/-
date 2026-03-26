@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="card">
+    <text class="title">{{moduleName}}</text>
+    <text class="subtitle">选择二级分类进行定向刷题，或直接模块刷题。</text>
+    <button class="button-primary full-btn" bindtap="goModulePractice">模块刷题</button>
+  </view>
+
+  <view class="section-title">二级分类</view>
+  <view
+    class="card sub-card"
+    wx:for="{{subcategories}}"
+    wx:key="id"
+    data-subcategory-id="{{item.id}}"
+    data-subcategory-name="{{item.name}}"
+    bindtap="goPractice"
+  >
+    <text class="sub-name">{{item.name}}</text>
+    <text class="sub-arrow">去练习 ></text>
+  </view>
+</view>

@@ -1,0 +1,36 @@
+page {
+  box-sizing: border-box;
+  background: #f6f7fb;
+  color: #222222;
+  font-size: 28rpx;
+}
+
+.container {
+  min-height: 100vh;
+  padding: 24rpx;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.04);
+}
+
+.title {
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.button-primary {
+  background: #2b73ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 12rpx;
+}

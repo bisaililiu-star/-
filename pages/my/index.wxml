@@ -1,0 +1,49 @@
+<view class="container">
+  <view class="card">
+    <text class="title">我的练习中心</text>
+    <text class="subtitle">聚合错题、收藏和上传记录，形成持续练习闭环。</text>
+  </view>
+
+  <view class="card stats-card">
+    <view class="stats-item">
+      <text class="stats-num">{{stats.wrongCount}}</text>
+      <text class="stats-label">错题数量</text>
+    </view>
+    <view class="stats-item">
+      <text class="stats-num">{{stats.favoriteCount}}</text>
+      <text class="stats-label">收藏数量</text>
+    </view>
+    <view class="stats-item">
+      <text class="stats-num">{{stats.uploadCount}}</text>
+      <text class="stats-label">上传记录</text>
+    </view>
+    <view class="stats-item">
+      <text class="stats-num">{{stats.totalQuestionCount}}</text>
+      <text class="stats-label">题库总数</text>
+    </view>
+  </view>
+
+  <view class="card action-card" bindtap="goWrongPractice">
+    <text class="action-title">错题练习</text>
+    <text class="action-desc">针对已答错题目进行强化训练</text>
+  </view>
+
+  <view class="card action-card" bindtap="goFavoritePractice">
+    <text class="action-title">收藏练习</text>
+    <text class="action-desc">优先刷你标记收藏的重点题</text>
+  </view>
+
+  <view class="section-title">近期上传</view>
+  <view wx:if="{{!recentUploads.length}}" class="card">
+    <text class="subtitle">暂无上传记录，去拍照上传题目吧。</text>
+  </view>
+  <view class="card upload-card" wx:for="{{recentUploads}}" wx:key="id">
+    <image class="upload-image" src="{{item.imagePath}}" mode="aspectFill" />
+    <view class="upload-main">
+      <text class="upload-note">{{item.note || '未填写备注'}}</text>
+      <text class="upload-time">{{item.createdAt}}</text>
+    </view>
+  </view>
+
+  <button class="button-primary" bindtap="goUpload">去拍照上传</button>
+</view>

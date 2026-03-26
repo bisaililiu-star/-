@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/subcategory/index",
+    "pages/practice/index",
+    "pages/upload/index",
+    "pages/my/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "小茧同学",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f6f7fb",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

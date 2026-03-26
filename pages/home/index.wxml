@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="card hero-card">
+    <text class="title">小茧同学 · 智能题库</text>
+    <text class="subtitle">拍照上传题目、按模块刷题、错题与收藏闭环练习</text>
+    <view class="quick-actions">
+      <button class="button-primary action-btn" bindtap="goUpload">拍照上传题目</button>
+      <button class="button-plain action-btn" bindtap="goMy">我的练习</button>
+    </view>
+  </view>
+
+  <view class="card stats-card">
+    <view class="stats-item">
+      <text class="stats-num">{{stats.totalQuestionCount}}</text>
+      <text class="stats-label">题库总数</text>
+    </view>
+    <view class="stats-item">
+      <text class="stats-num">{{stats.wrongCount}}</text>
+      <text class="stats-label">错题</text>
+    </view>
+    <view class="stats-item">
+      <text class="stats-num">{{stats.favoriteCount}}</text>
+      <text class="stats-label">收藏</text>
+    </view>
+    <view class="stats-item">
+      <text class="stats-num">{{stats.uploadCount}}</text>
+      <text class="stats-label">上传记录</text>
+    </view>
+  </view>
+
+  <view class="section-title">一级模块分类</view>
+  <view
+    class="card module-card"
+    wx:for="{{modules}}"
+    wx:key="id"
+    data-module-id="{{item.id}}"
+    data-module-name="{{item.name}}"
+    bindtap="goSubcategory"
+  >
+    <view class="module-main">
+      <text class="module-name">{{item.name}}</text>
+      <text class="module-desc">{{item.description}}</text>
+    </view>
+    <text class="module-arrow">进入 ></text>
+  </view>
+</view>

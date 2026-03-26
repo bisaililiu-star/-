@@ -1,0 +1,9 @@
+{
+  "desc": "小茧同学题库小程序 sitemap",
+  "rules": [
+    {
+      "action": "allow",
+      "page": "*"
+    }
+  ]
+}

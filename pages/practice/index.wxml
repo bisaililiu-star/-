@@ -1,0 +1,34 @@
+<view class="container">
+  <view wx:if="{{!questions.length}}" class="card empty-card">
+    <text class="title">暂无可练习题目</text>
+    <text class="subtitle">请返回选择其他分类，或先完成拍照上传。</text>
+  </view>
+
+  <view wx:else>
+    <view class="card progress-card">
+      <text class="progress-text">第 {{currentIndex + 1}} / {{questions.length}} 题</text>
+      <text class="mode-text" wx:if="{{mode === 'wrong'}}">模式：错题练习</text>
+      <text class="mode-text" wx:if="{{mode === 'favorite'}}">模式：收藏练习</text>
+      <text class="mode-text" wx:if="{{mode === 'normal'}}">模式：分类刷题</text>
+    </view>
+
+    <question-card
+      question="{{currentQuestion}}"
+      selectedIndex="{{selectedIndex}}"
+      showAnalysis="{{showAnalysis}}"
+      isFavorite="{{isFavorite}}"
+      bind:selectoption="onSelectOption"
+      bind:togglefavorite="onToggleFavorite"
+    />
+
+    <view class="submit-wrap">
+      <button class="button-primary" bindtap="submitAnswer">提交答案</button>
+      <text class="submit-result">{{submitResultText}}</text>
+    </view>
+
+    <view class="nav-actions">
+      <button class="button-plain" bindtap="prevQuestion">上一题</button>
+      <button class="button-primary" bindtap="nextQuestion">下一题</button>
+    </view>
+  </view>
+</view>

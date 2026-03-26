@@ -1,0 +1,27 @@
+<view wx:if="{{question}}" class="question-card">
+  <view class="question-header">
+    <text class="question-title">题目</text>
+    <text class="favorite-tag {{isFavorite ? 'active' : ''}}" bindtap="onToggleFavorite">
+      {{isFavorite ? '已收藏' : '收藏'}}
+    </text>
+  </view>
+
+  <view class="stem">{{question.stem}}</view>
+
+  <view class="option-list">
+    <view
+      wx:for="{{question.options}}"
+      wx:key="index"
+      class="option-item {{selectedIndex === index ? 'selected' : ''}}"
+      data-index="{{index}}"
+      bindtap="onOptionTap"
+    >
+      <text>{{item}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{showAnalysis}}" class="analysis-wrap">
+    <text class="analysis-title">解析</text>
+    <text class="analysis-text">{{question.analysis}}</text>
+  </view>
+</view>

@@ -1,0 +1,81 @@
+.hero-card .subtitle {
+  margin-top: 10rpx;
+  display: block;
+  line-height: 1.6;
+}
+
+.quick-actions {
+  margin-top: 22rpx;
+  display: flex;
+  gap: 16rpx;
+}
+
+.action-btn {
+  flex: 1;
+  font-size: 26rpx;
+}
+
+.button-plain {
+  background: #ffffff;
+  color: #2b73ff;
+  border: 1rpx solid #2b73ff;
+  border-radius: 12rpx;
+}
+
+.stats-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18rpx;
+}
+
+.stats-item {
+  width: calc(50% - 9rpx);
+  background: #f8faff;
+  border-radius: 12rpx;
+  padding: 18rpx;
+}
+
+.stats-num {
+  display: block;
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #2b73ff;
+}
+
+.stats-label {
+  color: #666666;
+  font-size: 24rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  margin: 8rpx 0 12rpx;
+}
+
+.module-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.module-main {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.module-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.module-desc {
+  color: #666666;
+  font-size: 24rpx;
+}
+
+.module-arrow {
+  color: #2b73ff;
+  font-size: 24rpx;
+}

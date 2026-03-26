@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="card">
+    <text class="title">拍照上传题目</text>
+    <text class="subtitle">用于记录题目图片，后续可接入 OCR 与智能解析。</text>
+
+    <view class="upload-actions">
+      <button class="button-primary" bindtap="chooseFromCamera">拍照</button>
+      <button class="button-plain" bindtap="chooseFromAlbum">相册选图</button>
+    </view>
+
+    <image wx:if="{{imagePath}}" class="preview-image" src="{{imagePath}}" mode="aspectFit" />
+
+    <textarea
+      class="note-input"
+      placeholder="可填写题目备注，例如：八年级上册-函数基础"
+      value="{{note}}"
+      bindinput="onNoteInput"
+    />
+    <button class="button-primary" bindtap="submitUpload">保存上传记录</button>
+  </view>
+
+  <view class="section-title">最近上传记录</view>
+  <view wx:if="{{!uploadRecords.length}}" class="card">
+    <text class="subtitle">暂无上传记录</text>
+  </view>
+
+  <view class="card record-card" wx:for="{{uploadRecords}}" wx:key="id">
+    <image class="record-image" src="{{item.imagePath}}" mode="aspectFill" />
+    <view class="record-main">
+      <text class="record-note">{{item.note || '未填写备注'}}</text>
+      <text class="record-time">{{item.createdAt}}</text>
+    </view>
+  </view>
+</view>
