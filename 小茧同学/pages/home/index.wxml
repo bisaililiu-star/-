@@ -1,45 +1,72 @@
-<view class="container">
-  <view class="card hero-card">
-    <text class="title">小茧同学 · 智能题库</text>
-    <text class="subtitle">拍照上传题目、按模块刷题、错题与收藏闭环练习</text>
-    <view class="quick-actions">
-      <button class="button-primary action-btn" bindtap="goUpload">拍照上传题目</button>
-      <button class="button-plain action-btn" bindtap="goMy">我的练习</button>
+<view class="home-page">
+  <view class="hero-wrap">
+    <view class="hero-bg">
+      <view class="safe-area" style="height: {{safeTop}}px;"></view>
+      <view class="hero-top">
+        <view class="role-pill" bindtap="onRoleTap">
+          <text class="role-text">学生</text>
+          <text class="role-arrow">⌄</text>
+        </view>
+        <view class="tools-group">
+          <view class="tool-btn">
+            <view class="tool-dots">
+              <view class="dot-mini"></view>
+              <view class="dot-mini"></view>
+              <view class="dot-mini"></view>
+            </view>
+          </view>
+          <view class="tool-btn ring"></view>
+        </view>
+      </view>
+      <view class="hero-content">
+        <view class="slogan">
+          <text class="slogan-line">抽丝剥茧，</text>
+          <text class="slogan-line">题题通透</text>
+        </view>
+        <view class="mascot">
+          <view class="mascot-core">🐛</view>
+        </view>
+      </view>
     </view>
   </view>
 
-  <view class="card stats-card">
-    <view class="stats-item">
-      <text class="stats-num">{{stats.totalQuestionCount}}</text>
-      <text class="stats-label">题库总数</text>
-    </view>
-    <view class="stats-item">
-      <text class="stats-num">{{stats.wrongCount}}</text>
-      <text class="stats-label">错题</text>
-    </view>
-    <view class="stats-item">
-      <text class="stats-num">{{stats.favoriteCount}}</text>
-      <text class="stats-label">收藏</text>
-    </view>
-    <view class="stats-item">
-      <text class="stats-num">{{stats.uploadCount}}</text>
-      <text class="stats-label">上传记录</text>
+  <view class="feature-panel">
+    <view
+      class="feature-item"
+      wx:for="{{featureCards}}"
+      wx:key="key"
+      data-feature-key="{{item.key}}"
+      bindtap="onFeatureTap"
+    >
+      <view class="feature-icon">{{item.icon}}</view>
+      <text class="feature-title">{{item.title}}</text>
     </view>
   </view>
+  <view class="module-preview" wx:if="{{modules.length}}">
+    <text class="module-preview-text">当前模块：{{modules[0].name}}</text>
+  </view>
+  <view class="slider-dots">
+    <view class="dot active"></view>
+    <view class="dot"></view>
+  </view>
 
-  <view class="section-title">一级模块分类</view>
-  <view
-    class="card module-card"
-    wx:for="{{modules}}"
-    wx:key="id"
-    data-module-id="{{item.id}}"
-    data-module-name="{{item.name}}"
-    bindtap="goSubcategory"
-  >
-    <view class="module-main">
-      <text class="module-name">{{item.name}}</text>
-      <text class="module-desc">{{item.description}}</text>
+  <view class="empty-wrap">
+    <view class="empty-icon">▭</view>
+    <text class="empty-title">题房为空</text>
+    <text class="empty-subtitle">快去添加题目吧</text>
+  </view>
+
+  <view class="bottom-nav">
+    <view class="nav-item active">
+      <text class="nav-icon">✦</text>
+      <text class="nav-label">题库</text>
     </view>
-    <text class="module-arrow">进入 ></text>
+    <view class="nav-center" bindtap="goUpload">
+      <text class="nav-center-plus">＋</text>
+    </view>
+    <view class="nav-item" bindtap="goMy">
+      <text class="nav-icon">◌</text>
+      <text class="nav-label">我的</text>
+    </view>
   </view>
 </view>
